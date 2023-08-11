@@ -23,30 +23,40 @@ function readLine() {
 }
 
 /*
- * Complete the 'pangrams' function below.
+ * Complete the 'twoArrays' function below.
  *
  * The function is expected to return a STRING.
- * The function accepts STRING s as parameter.
+ * The function accepts following parameters:
+ *  1. INTEGER k
+ *  2. INTEGER_ARRAY A
+ *  3. INTEGER_ARRAY B
  */
 
-function pangrams(s) {
-    s = s.replace(/\s/g, '').toLowerCase();
-        
-    if(new Set(s.replace(/[^a-z]/g, '')).size === 26) {
-        return 'pangram';
-    }
-    
-    return 'not pangram';
+function twoArrays(k, A, B) {
+    // Write your code here
+
 }
 
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
-    const s = readLine();
+    const q = parseInt(readLine().trim(), 10);
 
-    const result = pangrams(s);
+    for (let qItr = 0; qItr < q; qItr++) {
+        const firstMultipleInput = readLine().replace(/\s+$/g, '').split(' ');
 
-    ws.write(result + '\n');
+        const n = parseInt(firstMultipleInput[0], 10);
+
+        const k = parseInt(firstMultipleInput[1], 10);
+
+        const A = readLine().replace(/\s+$/g, '').split(' ').map(ATemp => parseInt(ATemp, 10));
+
+        const B = readLine().replace(/\s+$/g, '').split(' ').map(BTemp => parseInt(BTemp, 10));
+
+        const result = twoArrays(k, A, B);
+
+        ws.write(result + '\n');
+    }
 
     ws.end();
 }
