@@ -33,8 +33,35 @@ function readLine() {
  */
 
 function twoArrays(k, A, B) {
-    // Write your code here
-
+    
+    var assertions = [];
+    
+    A.sort((a, b) => a - b);
+    B.sort((a, b) => a - b).reverse();
+    
+    let i = 0;
+    
+    for(i = 0; i < A.length ; i++) {
+        if(A.length > 3 && A.filter((element) => element >= 1).length < 3){
+            assertions[i] = false;
+        } else { 
+            if(A[i] + B[i] >= k) {
+                assertions[i] = true;
+            } else {
+                assertions[i] = false;
+            }
+        }
+    }
+    
+    console.log(assertions);
+    
+    assertions = assertions.filter((element) => element == false);
+                
+    if(assertions.length > 0) {
+        return 'NO';
+    }
+    
+    return 'YES';
 }
 
 function main() {
